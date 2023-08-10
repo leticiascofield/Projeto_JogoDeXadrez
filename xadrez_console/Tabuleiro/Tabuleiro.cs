@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace tabuleiro {
+namespace Xadrez.Tabuleiro {
     internal class Tabuleiro {
 
         public int Linhas { get; set; }

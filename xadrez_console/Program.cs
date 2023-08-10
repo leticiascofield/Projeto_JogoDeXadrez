@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using tabuleiro;
+using Xadrez.Tabuleiro;
 
 namespace XadrezConsole {
     internal class Program {

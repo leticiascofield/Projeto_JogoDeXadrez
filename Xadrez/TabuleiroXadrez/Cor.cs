@@ -1,6 +1,6 @@
 ﻿
 
-namespace Xadrez.Tabuleiro {
+namespace TabuleiroXadrez {
     enum Cor {
         Branca,
         Preta

@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Xadrez.Tabuleiro {
+namespace TabuleiroXadrez {
     internal class Peca {
 
         public Posicao Posicao { get; set; }

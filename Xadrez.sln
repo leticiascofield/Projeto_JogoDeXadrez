@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xadrez_console", "xadrez_console\xadrez_console.csproj", "{7D657ECE-CFEF-461D-A969-D8BA9A7A4EF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xadrez", "Xadrez\Xadrez.csproj", "{262EF082-2E6D-472F-8736-A9E4B7FB460B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D657ECE-CFEF-461D-A969-D8BA9A7A4EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D657ECE-CFEF-461D-A969-D8BA9A7A4EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D657ECE-CFEF-461D-A969-D8BA9A7A4EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D657ECE-CFEF-461D-A969-D8BA9A7A4EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262EF082-2E6D-472F-8736-A9E4B7FB460B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262EF082-2E6D-472F-8736-A9E4B7FB460B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262EF082-2E6D-472F-8736-A9E4B7FB460B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262EF082-2E6D-472F-8736-A9E4B7FB460B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FDBDAC5C-A923-48DF-89E6-323D4F8FFEEF}
+		SolutionGuid = {841ECD06-CDED-4F22-9B87-68378C320688}
 	EndGlobalSection
 EndGlobal

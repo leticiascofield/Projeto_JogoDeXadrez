@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Globalization;
 
-namespace xadrez_console {
+namespace XadrezConsole {
     internal class Program {
         static void Main(string[] args) {
             
-            
+             
 
         }
     }

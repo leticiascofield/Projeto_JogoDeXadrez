@@ -11,17 +11,17 @@ namespace XadrezConsole {
             try {
 
                 Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+                PosicaoXadrez posicaoXadrez = new PosicaoXadrez('c', 7);
 
-                tabuleiro.AdicionarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(0, 0));
-                tabuleiro.AdicionarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(1, 9));
-                tabuleiro.AdicionarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(2, 4));
-                tabuleiro.AdicionarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(0, 0));
 
+                Console.WriteLine(posicaoXadrez);
+                Console.WriteLine(posicaoXadrez.ToPosicao());
                 Tela.ImprimirTabuleiro(tabuleiro);
+
+
             } catch (TabuleiroException ex) { 
                 Console.WriteLine(ex.Message);
             }
-
         }
     }
 

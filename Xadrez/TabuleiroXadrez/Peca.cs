@@ -9,8 +9,8 @@ namespace TabuleiroXadrez {
         public int QteMovimentos { get; set; }
         public Tabuleiro Tabuleiro { get; set; }
 
-        public Peca(Posicao posicao, Cor cor, Tabuleiro tabuleiro) {
-            Posicao = posicao;
+        public Peca(Cor cor, Tabuleiro tabuleiro) {
+            Posicao = null;
             Cor = cor;
             QteMovimentos = 0;
             Tabuleiro = tabuleiro;

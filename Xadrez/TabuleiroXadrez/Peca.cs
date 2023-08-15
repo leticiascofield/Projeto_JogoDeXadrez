@@ -2,7 +2,7 @@
 
 
 namespace TabuleiroXadrez {
-    internal class Peca {
+    abstract class Peca {
 
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
@@ -19,5 +19,7 @@ namespace TabuleiroXadrez {
         public void IncrementarQteMovimentos() {
             QteMovimentos++;
         }
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }

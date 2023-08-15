@@ -26,7 +26,8 @@ namespace LogicaXadrez {
 
         private void AdicionarPecas() {
             Tabuleiro.AdicionarPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('a', 1).ToPosicao());
-            Tabuleiro.AdicionarPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('h', 1).ToPosicao());
+            Tabuleiro.AdicionarPeca(new Torre(Cor.Preta, Tabuleiro), new PosicaoXadrez('h', 1).ToPosicao());
+            Tabuleiro.AdicionarPeca(new Rei(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 2).ToPosicao());
         }
     }
 }

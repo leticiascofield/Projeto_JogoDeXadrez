@@ -29,7 +29,7 @@ namespace LogicaXadrez {
             peca.IncrementarQteMovimentos();
             Peca pecaCapturada = Tabuleiro.RemoverPeca(destino);
             Tabuleiro.AdicionarPeca(peca, destino);
-            if(pecaCapturada != null) {
+            if (pecaCapturada != null) {
                 PecaCapturada.Add(pecaCapturada);
             }
             return pecaCapturada;
@@ -38,7 +38,7 @@ namespace LogicaXadrez {
         public void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada) {
             Peca peca = Tabuleiro.RemoverPeca(destino);
             peca.DecrementarQteMovimentos();
-            if(pecaCapturada != null) {
+            if (pecaCapturada != null) {
                 Tabuleiro.AdicionarPeca(pecaCapturada, destino);
                 PecaCapturada.Remove(pecaCapturada);
             }
@@ -47,17 +47,22 @@ namespace LogicaXadrez {
 
         public void RealizaJogada(Posicao origem, Posicao destino) {
             Peca pecaCapturada = ExecutaMovimento(origem, destino);
-            if(EstaEmXeque(JogadorAtual)) {
+            if (EstaEmXeque(JogadorAtual)) {
                 DesfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Não é permitido colocar-se em xeque.");
             }
-            if(EstaEmXeque(Oponente(JogadorAtual))) {
+            if (EstaEmXeque(Oponente(JogadorAtual))) {
                 Xeque = true;
             } else {
                 Xeque = false;
             }
-            Turno++;
-            MudancaDeJogador();
+
+            if (XequeMate(Oponente(JogadorAtual))) {
+                Terminada = true;
+            } else {
+                Turno++;
+                MudancaDeJogador();
+            }
         }
 
         public void PosicaoDeOrigemValida(Posicao origem) {
@@ -80,7 +85,7 @@ namespace LogicaXadrez {
         }
 
         private void MudancaDeJogador() {
-            if(JogadorAtual == Cor.Branca) {
+            if (JogadorAtual == Cor.Branca) {
                 JogadorAtual = Cor.Preta;
             } else {
                 JogadorAtual = Cor.Branca;
@@ -89,7 +94,7 @@ namespace LogicaXadrez {
 
         public HashSet<Peca> PecasCapturadasPorCor(Cor cor) {
             HashSet<Peca> aux = new HashSet<Peca>();
-            foreach(Peca x in PecaCapturada) {
+            foreach (Peca x in PecaCapturada) {
                 if (x.Cor == cor) {
                     aux.Add(x);
                 }
@@ -127,16 +132,40 @@ namespace LogicaXadrez {
             
         public bool EstaEmXeque(Cor cor) {
             Peca R = Rei(cor);
-            if(R == null) {
+            if (R == null) {
                 throw new TabuleiroException("Não existe rei da cor.");
             }
-            foreach(Peca x in PecasEmJogoPorCor(Oponente(cor))) {
-                bool[,] mat = x.MovimentosPossiveis();
+            foreach (Peca p in PecasEmJogoPorCor(Oponente(cor))) {
+                bool[,] mat = p.MovimentosPossiveis();
                 if(mat[R.Posicao.Linha, R.Posicao.Coluna] != false) {
                     return true;
                 }
             }
             return false;
+        }
+
+        public bool XequeMate(Cor cor) {
+            if (!EstaEmXeque(cor)) { 
+                return false;
+            }
+            foreach (Peca p in PecasEmJogoPorCor(cor)) {
+                bool[,] mat = p.MovimentosPossiveis();
+                for (int i = 0; i < Tabuleiro.Linhas; i++) {
+                    for (int j = 0; j < Tabuleiro.Colunas; j++) {
+                        if (mat[i,j]) {
+                            Posicao origem = p.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutaMovimento(origem, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(origem, destino, pecaCapturada);
+                            if (!testeXeque) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         public void AdicionarNovaPeca(char coluna, int linha, Peca peca) {
@@ -146,13 +175,13 @@ namespace LogicaXadrez {
 
         private void AdicionarPecas() {
 
-            AdicionarNovaPeca('a', 1, new Torre(Cor.Branca, Tabuleiro));
-            AdicionarNovaPeca('h', 1, new Torre(Cor.Branca, Tabuleiro));
+            AdicionarNovaPeca('c', 1, new Torre(Cor.Branca, Tabuleiro));
+            AdicionarNovaPeca('h', 7, new Torre(Cor.Branca, Tabuleiro));
             AdicionarNovaPeca('e', 1, new Rei(Cor.Branca, Tabuleiro));
 
-            AdicionarNovaPeca('a', 8, new Torre(Cor.Preta, Tabuleiro));
-            AdicionarNovaPeca('h', 8, new Torre(Cor.Preta, Tabuleiro));
-            AdicionarNovaPeca('d', 8, new Rei(Cor.Preta, Tabuleiro));
+            AdicionarNovaPeca('b', 8, new Torre(Cor.Preta, Tabuleiro));
+            //AdicionarNovaPeca('h', 8, new Torre(Cor.Preta, Tabuleiro));
+            AdicionarNovaPeca('a', 8, new Rei(Cor.Preta, Tabuleiro));
             
         }
     }

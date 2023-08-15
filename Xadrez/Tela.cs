@@ -11,10 +11,18 @@ namespace Xadrez {
             ImprimirPecasCapturas(partidaDeXadrez);
             Console.WriteLine();
             Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
-            Console.WriteLine("Aguardando jogada: " + partidaDeXadrez.JogadorAtual);
-            if(partidaDeXadrez.Xeque) {
+            if (!partidaDeXadrez.Terminada) {
+                Console.WriteLine("Aguardando jogada: " + partidaDeXadrez.JogadorAtual);
+                if (partidaDeXadrez.Xeque) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("XEQUE!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            } else {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine("XEQUEMATE!");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Vencedor: " + partidaDeXadrez.JogadorAtual);
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
@@ -34,7 +42,7 @@ namespace Xadrez {
 
         public static void ImprimirConjunto(HashSet<Peca> conjunto) {
             Console.Write("[");
-            foreach(Peca p in conjunto) {
+            foreach (Peca p in conjunto) {
                 Console.Write(p + " ");
             }
             Console.Write("]");
@@ -43,9 +51,9 @@ namespace Xadrez {
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro) {
 
             Console.WriteLine();
-            for(int i = 0; i < tabuleiro.Linhas;  i++) {
+            for (int i = 0; i < tabuleiro.Linhas;  i++) {
                 Console.Write("  " + (8 - i) + " ");
-                for(int j = 0; j < tabuleiro.Colunas; j++) {
+                for (int j = 0; j < tabuleiro.Colunas; j++) {
                    Tela.ImprimirPeca(tabuleiro.Peca(i, j));
                 }
                 Console.WriteLine();

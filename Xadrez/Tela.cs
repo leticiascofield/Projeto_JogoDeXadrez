@@ -1,9 +1,39 @@
-﻿using LogicaXadrez;
-using System;
+﻿using System.Collections.Generic;
 using TabuleiroXadrez;
+using LogicaXadrez;
 
 namespace Xadrez {
     internal class Tela {
+
+        public static void ImprimirPartida(PartidaDeXadrez partidaDeXadrez) {
+            ImprimirTabuleiro(partidaDeXadrez.Tabuleiro);
+            Console.WriteLine();
+            ImprimirPecasCapturas(partidaDeXadrez);
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
+            Console.WriteLine("Aguardando jogada: " + partidaDeXadrez.JogadorAtual);
+
+        }
+
+        public static void ImprimirPecasCapturas(PartidaDeXadrez partidaDeXadrez) {
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Brancas: ");
+            ImprimirConjunto(partidaDeXadrez.PecasCapturadasPorCor(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            ImprimirConjunto(partidaDeXadrez.PecasCapturadasPorCor(Cor.Preta));
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+        }
+
+        public static void ImprimirConjunto(HashSet<Peca> conjunto) {
+            Console.Write("[");
+            foreach(Peca p in conjunto) {
+                Console.Write(p + " ");
+            }
+            Console.Write("]");
+        }
 
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro) {
 

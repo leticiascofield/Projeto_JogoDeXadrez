@@ -53,9 +53,7 @@ namespace Xadrez {
 
             Console.WriteLine();
             for (int i = 0; i < tabuleiro.Linhas;  i++) {
-          //    Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("  " + (8 - i) + " ");
-          //    Console.ForegroundColor = ConsoleColor.White;
                 for (int j = 0; j < tabuleiro.Colunas; j++) {
                     if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) { 
                         Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -67,9 +65,7 @@ namespace Xadrez {
                 }
                 Console.WriteLine();
             }
-         // Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("     a  b  c  d  e  f  g  h ");
-         // Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
 
@@ -79,9 +75,7 @@ namespace Xadrez {
             ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoAlterado = ConsoleColor.White;
             for (int i = 0; i < tabuleiro.Linhas; i++) {
-           //   Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("  " + (8 - i) + " ");
-           //   Console.ForegroundColor = ConsoleColor.White;
                 for (int j = 0; j < tabuleiro.Colunas; j++) {
                     if (posicoesPossiveis[i,j]) {
                         Console.BackgroundColor = fundoAlterado;
@@ -97,9 +91,7 @@ namespace Xadrez {
                 }
                 Console.WriteLine();
             }
-         // Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("     a  b  c  d  e  f  g  h ");
-         // Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.BackgroundColor = fundoOriginal;
         }
@@ -156,6 +148,7 @@ namespace Xadrez {
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine("Legenda:");
+            Console.WriteLine();
             Console.WriteLine("    P - Peão");
             Console.WriteLine("    T - Torre");
             Console.WriteLine("    C - Cavalo");

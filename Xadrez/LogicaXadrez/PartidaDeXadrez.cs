@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TabuleiroXadrez;
 using LogicaXadrez;
+using System.Security.Authentication;
 
 namespace LogicaXadrez {
     internal class PartidaDeXadrez {
@@ -124,12 +125,8 @@ namespace LogicaXadrez {
 
             // promocao
             if (p is Peao) {
-                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7)) { 
-                    p = Tabuleiro.RemoverPeca(destino);
-                    Peca.Remove(p);
-                    Peca dama = new Dama(p.Cor, Tabuleiro);
-                    Tabuleiro.AdicionarPeca(dama, destino);
-                    Peca.Add(dama);
+                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7)) {
+                    JogadaEspecialPromocao(destino);
                 }
             }
 
@@ -212,6 +209,42 @@ namespace LogicaXadrez {
             }
             return null;
         }
+
+        private void JogadaEspecialPromocao (Posicao destino) { 
+            Peca p = Tabuleiro.RemoverPeca(destino);
+            Peca.Remove(p);
+
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("A jogada especial Promoção foi realizada!");
+            Console.WriteLine("Digite por qual peça gostaria de trocar o seu peão:");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("(Opções: dama, torre, bispo, cavalo)");
+            Console.ForegroundColor = ConsoleColor.White;
+            Peca nova;
+            string s = Console.ReadLine();
+
+            while (s != "dama" && s != "torre" && s != "bispo" && s != "cavalo") {
+                Console.WriteLine("Erro de digitação: certifique-se de digitar todas as letras minúsculas.");
+                Console.Write("Reescreva: ");
+                s = Console.ReadLine();
+            }
+
+            if (s == "dama") {
+                nova = new Dama(p.Cor, Tabuleiro);
+            } else if (s == "torre") {
+                nova = new Torre(p.Cor, Tabuleiro);
+            } else if (s == "bispo") {
+                nova = new Bispo(p.Cor, Tabuleiro);
+            } else if (s == "cavalo") {
+                nova = new Cavalo(p.Cor, Tabuleiro);
+            } else {
+                nova = new Dama(p.Cor, Tabuleiro);
+            }
+
+            Tabuleiro.AdicionarPeca(nova, destino);
+            Peca.Add(nova);
+        }
             
         public bool EstaEmXeque(Cor cor) {
             Peca R = Rei(cor);
@@ -291,6 +324,6 @@ namespace LogicaXadrez {
             AdicionarNovaPeca('f', 7, new Peao(Cor.Preta, Tabuleiro, this));
             AdicionarNovaPeca('g', 7, new Peao(Cor.Preta, Tabuleiro, this));
             AdicionarNovaPeca('h', 7, new Peao(Cor.Preta, Tabuleiro, this));
-        }
+        } 
     }
 }

@@ -120,14 +120,25 @@ namespace LogicaXadrez {
                 Xeque = false;
             }
 
+            Peca p = Tabuleiro.Peca(destino);
+
+            // promocao
+            if (p is Peao) {
+                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7)) { 
+                    p = Tabuleiro.RemoverPeca(destino);
+                    Peca.Remove(p);
+                    Peca dama = new Dama(p.Cor, Tabuleiro);
+                    Tabuleiro.AdicionarPeca(dama, destino);
+                    Peca.Add(dama);
+                }
+            }
+
             if (XequeMate(Oponente(JogadorAtual))) {
                 Terminada = true;
             } else {
                 Turno++;
                 MudancaDeJogador();
             }
-
-            Peca p = Tabuleiro.Peca(destino);
 
             // en passant
             if  (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2)) {

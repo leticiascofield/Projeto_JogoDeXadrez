@@ -22,9 +22,10 @@ namespace LogicaXadrez {
                     mat[posicao.Linha, posicao.Coluna] = true;
                 }
 
+                Posicao frente2 = new Posicao(Posicao.Linha - 2, Posicao.Coluna);
                 if (QteMovimentos == 0) {
                     posicao.DefinirValores(Posicao.Linha - 2, Posicao.Coluna);
-                    if (Tabuleiro.PosicaoValida(posicao) && MovimentoPossivel(posicao) && (!Tabuleiro.ExistePeca(frente))) {
+                    if (Tabuleiro.PosicaoValida(posicao) && MovimentoPossivel(posicao) && (!Tabuleiro.ExistePeca(frente)) && (!Tabuleiro.ExistePeca(frente2))) {
                         mat[posicao.Linha, posicao.Coluna] = true;
                     }
                 }
@@ -73,9 +74,10 @@ namespace LogicaXadrez {
                     mat[posicao.Linha, posicao.Coluna] = true;
                 }
 
+                Posicao frente2 = new Posicao(Posicao.Linha + 2, Posicao.Coluna);
                 if (QteMovimentos == 0) {
                     posicao.DefinirValores(Posicao.Linha + 2, Posicao.Coluna);
-                    if (Tabuleiro.PosicaoValida(posicao) && MovimentoPossivel(posicao) && (!Tabuleiro.ExistePeca(frente))) {
+                    if (Tabuleiro.PosicaoValida(posicao) && MovimentoPossivel(posicao) && (!Tabuleiro.ExistePeca(frente)) && (!Tabuleiro.ExistePeca(frente2))) {
                         mat[posicao.Linha, posicao.Coluna] = true;
                     }
                 }
@@ -129,6 +131,8 @@ namespace LogicaXadrez {
             Peca peca = Tabuleiro.Peca(posicao);
             return peca == null || peca.Cor != Cor;
         }
+
+
 
         public override string ToString() {
             return "P";

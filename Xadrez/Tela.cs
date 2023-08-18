@@ -32,7 +32,9 @@ namespace Xadrez {
         public static void ImprimirPecasCapturas(PartidaDeXadrez partidaDeXadrez) {
             Console.WriteLine("Peças capturadas: ");
             Console.Write("Brancas: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             ImprimirConjunto(partidaDeXadrez.PecasCapturadasPorCor(Cor.Branca));
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.Write("Pretas: ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -104,6 +106,10 @@ namespace Xadrez {
                 ImprimirLegenda();
             }
 
+            if(s.Length < 2) {
+                throw new TabuleiroException("Erro de digitação, essa posição não existe.");
+            }
+ 
             char coluna = ' ';
             if (s[0] == 'a' || s[0] == 'b' || s[0] == 'c' || s[0] == 'd' ||
             s[0] == 'e' || s[0] == 'f' || s[0] == 'g' || s[0] == 'h') {

@@ -6,10 +6,13 @@ Este é um projeto de implementação de um jogo de xadrez em C#. O jogo de xadr
 o objetivo é dar xeque-mate ao rei do oponente. O projeto implementa as regras básicas do xadrez e permite que dois jogadores alternem seus
 movimentos até que um dos jogadores esteja em xeque-mate ou o jogo seja interrompido.
 
-![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/7d71c624-bd50-42b4-87ac-4a23544d6b0f)
-![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/ebabfaad-6d3b-440d-bf39-f0d323b8ac53)
-![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/dfde01c4-efe3-4355-8237-d4c0e3c537b2)
-![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/d4233624-580b-415b-998c-6748c2d4945b)
+![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/b03d8799-fc7d-4fa8-887d-afb414391029)
+![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/a3ba9e26-b575-4434-9e3f-fbf1572f8c37)
+
+![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/7a2019a7-dc96-4909-93e3-94ca103aef6a)
+![image](https://github.com/leticiascofield/Projeto_JogoDeXadrez/assets/125830543/3e7a476a-919d-4a3c-9f19-3a766e23d230)
+
+
 
 
 
